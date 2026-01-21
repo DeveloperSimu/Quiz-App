@@ -278,3 +278,25 @@ body::before {
         background-position: 0% 50%;
     }
 }
+
+/* =========================================
+   Score count
+========================================= */
+#score {
+    position: absolute;
+    top: 18px;
+    right: 20px;
+    padding: 8px 14px;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 20px;
+
+    background: linear-gradient(135deg, #00f2fe, #4facfe);
+    color: #021018;
+
+    box-shadow:
+        0 0 20px rgba(79, 172, 254, 0.8),
+        inset 0 1px 0 rgba(255,255,255,0.6);
+
+    letter-spacing: 1px;
+}
