@@ -1,0 +1,280 @@
+/* =========================================
+   GLOBAL RESET
+========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* =========================================
+   BODY – DARK + SPARKLING BACKGROUND
+========================================= */
+body {
+    position: relative;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+    color: #fffefe;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+}
+
+/* Sparkling Particles */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    background:
+        radial-gradient(circle, #fff 2px, transparent 2px) 20px 30px,
+        radial-gradient(circle, #ffffff 2px, transparent 2px) 100px 80px,
+        radial-gradient(circle, #fff 2px, transparent 2px) 250px 120px,
+        radial-gradient(circle, #fff 2px, transparent 2px) 350px 200px,
+        radial-gradient(circle, #fff 2px, transparent 2px) 480px 60px,
+        radial-gradient(circle, #fff 2px, transparent 2px) 600px 180px,
+        radial-gradient(circle, #fff 2px, transparent 2px) 720px 90px;
+    background-size: 100% 100%;
+    animation: sparkleMove 8s linear infinite;
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+@keyframes sparkleMove {
+    0% {
+        transform: translate(0, 0);
+        opacity: 0.9;
+    }
+
+    50% {
+        transform: translate(-50px, -30px);
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: translate(0, 0);
+        opacity: 0.9;
+    }
+}
+
+#sparkle-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+/* =========================================
+   QUIZ CONTAINER – FIXED SIZE
+========================================= */
+.quiz-container {
+    width: 460px;
+    height: 550px;
+    padding: 32px;
+    border-radius: 28px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    z-index: 10;
+
+    background: linear-gradient(180deg,
+        rgba(40, 20, 70, 0.95),
+        rgba(20, 20, 60, 0.92),
+        rgba(10, 15, 30, 0.9));
+
+    backdrop-filter: blur(22px) saturate(160%);
+
+    box-shadow:
+        0 35px 80px rgba(0, 0, 0, 0.75),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.quiz-container:hover {
+    transform: translateY(-6px) scale(1.015);
+
+    box-shadow:
+        0 0 15px rgba(0, 183, 255, 0.6),
+        0 0 35px rgba(0, 183, 255, 0.55),
+        0 0 70px rgba(0, 183, 255, 0.45),
+        0 0 110px rgba(0, 183, 255, 0.35),
+        0 45px 100px rgba(0, 0, 0, 0.85);
+
+    border: 1px solid rgba(0, 183, 255, 0.55);
+}
+
+/* =========================================
+   QUIZ HEADING
+========================================= */
+.quiz-container h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 28px;
+    margin-bottom: 20px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+
+    background: linear-gradient(135deg, #4facfe, #00f2fe, #8e2de2, #eda1ed);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 4s ease infinite;
+    text-shadow: 0 0 20px rgba(79, 172, 254, 0.4);
+}
+
+/* =========================================
+   QUESTION TEXT
+========================================= */
+#question {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    color: #f1f5f9;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+    overflow-wrap: break-word;
+}
+
+/* =========================================
+   OPTIONS BUTTONS
+========================================= */
+.option {
+    width: 100%;
+    margin: 10px 0;
+    padding: 14px 20px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    cursor: pointer;
+
+    font-size: 16px;
+    font-weight: 600;
+    color: #e8f4fd;
+
+    background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.12),
+            rgba(255, 255, 255, 0.05));
+
+    backdrop-filter: blur(12px);
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+
+    transition: all 0.3s ease;
+}
+
+.option:hover {
+    transform: translateY(-3px) scale(1.02);
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    box-shadow:
+        0 15px 45px rgba(102, 126, 234, 0.5),
+        0 0 35px rgba(118, 75, 162, 0.6);
+}
+
+.option.correct {
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+    box-shadow: 0 0 35px rgba(46, 204, 113, 0.7);
+}
+
+.option.wrong {
+    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+    box-shadow: 0 0 35px rgba(255, 65, 108, 0.7);
+}
+
+.option:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* =========================================
+   NEXT BUTTON
+========================================= */
+#nextBtn {
+    width: 100%;
+    margin-top: 20px;
+    padding: 14px 28px;
+    border-radius: 22px;
+    border: none;
+    cursor: pointer;
+
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.25);
+
+    display: none;
+    transition: all 0.35s ease;
+}
+
+#nextBtn:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow:
+        0 20px 45px rgba(44, 83, 100, 0.6),
+        0 0 30px rgba(79, 172, 254, 0.5);
+}
+
+/* =========================================
+   STATUS MESSAGE
+========================================= */
+#status {
+    margin-top: 18px;
+    padding: 10px 16px;
+    border-radius: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+#status.correct {
+    color: #2ecc71;
+    background: rgba(46, 204, 113, 0.15);
+    box-shadow: 0 0 20px rgba(46, 204, 113, 0.6);
+}
+
+#status.wrong {
+    color: #ff416c;
+    background: rgba(255, 65, 108, 0.15);
+    box-shadow: 0 0 20px rgba(255, 65, 108, 0.6);
+}
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}

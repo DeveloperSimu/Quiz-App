@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ultra MCQ Quiz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="sparkle-container"></div> <!-- JS sparkles -->
+    <div class="quiz-container">
+        <h1>⚡ MCQ QUIZ</h1>
+
+        <div id="question">Question</div>
+
+        <div class="options">
+            <button class="option" onclick="checkAnswer(0)"></button>
+            <button class="option" onclick="checkAnswer(1)"></button>
+            <button class="option" onclick="checkAnswer(2)"></button>
+            <button class="option" onclick="checkAnswer(3)"></button>
+        </div>
+
+        <button id="nextBtn" onclick="nextQuestion()">Next</button>
+
+        <div id="status"></div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="sparkle.js"></script> <!-- JS sparkles -->
+</body>
+
+</html>
